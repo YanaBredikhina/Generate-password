@@ -1,0 +1,32 @@
+from random import sample
+
+digits = '0123456789'
+lowercase = 'abcdefghijklmnopqrstuvwxyz'
+uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+punctuation = '!#$%&*+-=?@^_'
+
+number = int(input('Введите количество паролей для генерации: '))
+length = int(input('Укажите длину одного пароля (не более 60 символов): '))
+digits_pas = input('Включать цифры в пароль? (Да/Нет): ').lower()
+lowercase_letters = input('Включать прописные буквы в пароль? (Да/Нет): ').lower()
+uppercase_letters = input('Включать заглавные буквы в пароль? (Да/Нет): ').lower()
+punctuation_pas = input('Включать символы в пароль? (Да/Нет): ').lower()
+uncertain_symbol = input('Исключать из пароля неоднозначные символы? (Да/Нет): ').lower()
+
+def generate_password(length, ch):
+    print()
+    for i in range(1, number+1):
+        print('\U0001F511 Ваш пароль №', str(i)+':', ''.join(sample(ch, length)))
+
+chars = ''
+if digits_pas == 'да':
+    chars += digits
+if lowercase_letters == 'да':
+    chars += lowercase
+if uppercase_letters == 'да':
+    chars += uppercase
+if punctuation_pas == 'да':
+    chars += punctuation
+if uncertain_symbol == 'нет':
+    chars += 'il1Lo0O'
+generate_password(length, chars)
